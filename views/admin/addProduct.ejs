@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Product</title>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/">Shop</a></li>
+        <li><a href="/admin/addProduct">Add Product</a></li>
+        <li><a href="/products">Products</a></li>
+        <li><a href="/cart">Cart</a></li>
+        <li><a href="/checkout">Checkout</a></li>
+        <li><a href="/admin/products">Admin Product</a></li>
+        <li><a href="/orders">Orders</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <form
+        action="/admin/<% if(editing) { %>editProduct<% } else { %>addProduct<% } %>"
+        method="POST"
+      >
+        <div>
+          <div>
+            <label for="title">Title</label>
+          </div>
+          <input type="text" name="title" id="title" />
+        </div>
+
+        <div>
+          <div>
+            <label for="price">Price</label>
+          </div>
+          <input type="number" name="price" id="price" step="0.01" />
+        </div>
+        <div>
+          <div>
+            <label for="description">Description</label>
+          </div>
+          <input type="text" name="description" id="description" />
+        </div>
+        <button type="submit">
+          <% if(editing) { %> Update Product <% } else { %> Add Product <% } %>
+        </button>
+      </form>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop</title>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/">Shop</a></li>
+        <li><a href="/admin/addProduct">Add Product</a></li>
+        <li><a href="/products">Products</a></li>
+        <li><a href="/cart">Cart</a></li>
+        <li><a href="/checkout">Checkout</a></li>
+        <li><a href="/admin/products">Admin Product</a></li>
+        <li><a href="/orders">Orders</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1>Products</h1>
+      <% if(prods.length > 0 ) { %> <% for(let product of prods) { %>
+      <div style="display: flex">
+        <div
+          style="
+            background-color: rgb(219, 219, 219);
+            padding: 5px 10px;
+            border-radius: 5px;
+          "
+        >
+          <ul style="list-style: none">
+            <li><%= product.title %></li>
+            <li><%= product.price %></li>
+            <li><%= product.description %></li>
+            <form action="/cart" method="POST">
+              <button type="submit">Add to Cart</button>
+              <input type="hidden" name="productId" value="<%= product.id %>" />
+            </form>
+          </ul>
+        </div>
+      </div>
+      <% } %> <% } else { %>
+      <p>No Products</p>
+      <% } %>
+    </main>
+  </body>
+</html>
