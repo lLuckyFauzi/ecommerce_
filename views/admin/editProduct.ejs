@@ -50,6 +50,17 @@
         </div>
         <div>
           <div>
+            <label for="imageUrl">ImageUrl</label>
+          </div>
+          <input
+            type="text"
+            name="imageUrl"
+            id="imageUrl"
+            value="<%if (editing) {%><%=product.imageUrl%><%}%>"
+          />
+        </div>
+        <div>
+          <div>
             <label for="description">Description</label>
           </div>
           <input
