@@ -3,6 +3,7 @@ const Product = require("../models/product");
 exports.getAddProduct = (req, res, next) => {
   res.render("admin/addProduct", {
     editing: false,
+    isLogIn: req.session.isLoggedIn,
   });
 };
 
@@ -42,6 +43,7 @@ exports.editProduct = (req, res, next) => {
       res.render("admin/editProduct", {
         editing: editMode,
         product: product,
+        isLogIn: req.session.isLoggedIn,
       });
     })
     .catch((err) => {
@@ -81,6 +83,7 @@ exports.getProducts = (req, res, next) => {
       res.render("admin/products", {
         prods: products,
         title: "Admin Products",
+        isLogIn: req.session.isLoggedIn,
       });
     })
     .catch((err) => {

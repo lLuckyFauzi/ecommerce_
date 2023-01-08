@@ -4,7 +4,11 @@ const Order = require("../models/order");
 exports.getProducts = (req, res, next) => {
   Product.find()
     .then((products) => {
-      res.render("shop/productList", { prods: products, title: "Shop" });
+      res.render("shop/productList", {
+        prods: products,
+        title: "Shop",
+        isLogIn: req.session.isLoggedIn,
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -14,7 +18,11 @@ exports.getProducts = (req, res, next) => {
 exports.getIndex = (req, res, next) => {
   Product.find()
     .then((products) => {
-      res.render("shop/index", { prods: products, title: "Shop" });
+      res.render("shop/index", {
+        prods: products,
+        title: "Shop",
+        isLogIn: req.session.isLoggedIn,
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -26,7 +34,10 @@ exports.getOneProduct = (req, res, next) => {
   Product.findById(prodId)
     .then((product) => {
       console.log(product);
-      res.render("shop/productDetail", { product: product });
+      res.render("shop/productDetail", {
+        product: product,
+        isLogIn: req.session.isLoggedIn,
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -40,6 +51,7 @@ exports.getCart = (req, res, next) => {
       const products = user.cart.items;
       res.render("shop/cart", {
         products: products,
+        isLogIn: req.session.isLoggedIn,
       });
     })
     .catch((err) => {
@@ -102,7 +114,10 @@ exports.deleteCart = (req, res, next) => {
 };
 
 exports.getCheckout = (req, res, next) => {
-  res.render("shop/checkout", { pageTitle: "Checkout" });
+  res.render("shop/checkout", {
+    pageTitle: "Checkout",
+    isLogIn: req.session.isLoggedIn,
+  });
 };
 
 exports.postOrder = (req, res, next) => {
@@ -135,7 +150,11 @@ exports.postOrder = (req, res, next) => {
 exports.getOrders = (req, res, next) => {
   Order.find({ "user.userId": req.user._id })
     .then((orders) => {
-      res.render("shop/orders", { pageTitle: "Orders", orders: orders });
+      res.render("shop/orders", {
+        pageTitle: "Orders",
+        orders: orders,
+        isLogIn: req.session.isLoggedIn,
+      });
     })
     .catch((err) => {
       console.log(err);

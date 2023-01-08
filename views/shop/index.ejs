@@ -13,14 +13,23 @@
       }
     </style>
     <nav>
-      <ul>
+      <ul style="display: flex; gap: 50px; list-style: none">
         <li><a href="/">Shop</a></li>
-        <li><a href="/admin/addProduct">Add Product</a></li>
         <li><a href="/products">Products</a></li>
+        <% if(isLogIn) { %>
         <li><a href="/cart">Cart</a></li>
         <li><a href="/checkout">Checkout</a></li>
-        <li><a href="/admin/products">Admin Product</a></li>
         <li><a href="/orders">Orders</a></li>
+        <li><a href="/admin/addProduct">Add Product</a></li>
+        <li><a href="/admin/products">Admin Product</a></li>
+        <li>
+          <form action="/postLogout" method="POST">
+            <button type="submit">Logout</button>
+          </form>
+        </li>
+        <% } else { %>
+        <li><a href="/login">Login</a></li>
+        <% } %>
       </ul>
     </nav>
 
@@ -42,10 +51,12 @@
         <p><%= product.title %></p>
         <p><%= product.price %></p>
         <p><%= product.description %></p>
+        <% if(isLogIn) { %>
         <form action="/cart" method="POST">
           <button type="submit">Add to Cart</button>
           <input type="hidden" name="productId" value="<%= product.id %>" />
         </form>
+        <% } %>
       </div>
       <% } %> <% } else { %>
       <p>No Products</p>
