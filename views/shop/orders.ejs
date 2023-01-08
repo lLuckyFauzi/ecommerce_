@@ -26,10 +26,10 @@
       <% } else { %>
       <div>
         <% orders.forEach(order => { %>
-        <p><%=order.id%></p>
+        <p><%=order._id%></p>
         <ul>
-          <% order.products.forEach(product => { %>
-          <li><p><%=product.title %> (<%=product.orderItem.quantity%>)</p></li>
+          <% order.items.forEach(product => { %>
+          <li><p><%=product.title %> (<%=product.quantity%>)</p></li>
           <% }) %>
         </ul>
         <% }) %>

@@ -34,9 +34,9 @@
             <li><%= product.title %></li>
             <li><%= product.price %></li>
             <li><%= product.description %></li>
-            <a href="/admin/editProduct/<%=product.id%>?edit=true">Edit</a>
+            <a href="/admin/editProduct/<%=product._id%>?edit=true">Edit</a>
             <form action="/admin/deleteProduct" method="POST">
-              <input type="hidden" value="<%=product.id %>" name="productId" />
+              <input type="hidden" value="<%=product._id %>" name="productId" />
               <button type="submit">Delete</button>
             </form>
           </ul>

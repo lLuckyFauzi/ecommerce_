@@ -34,10 +34,14 @@
             <li><%= product.title %></li>
             <li><%= product.price %></li>
             <li><%= product.description %></li>
-            <a href="/productDetail/<%= product.id %>">Detail</a>
+            <a href="/productDetail/<%= product._id %>">Detail</a>
             <form action="/cart" method="POST">
               <button type="submit">Add to Cart</button>
-              <input type="hidden" name="productId" value="<%= product.id %>" />
+              <input
+                type="hidden"
+                name="productId"
+                value="<%= product._id %>"
+              />
             </form>
           </ul>
         </div>
